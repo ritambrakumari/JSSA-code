@@ -4,6 +4,5 @@
 *.log
 **/dist/
 **/uploads/
-**/data/
-
+backend/data/
 
