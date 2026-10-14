@@ -1,0 +1,571 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+import React, { useState } from "react";
+import DashboardLayout from "../../components/DashboardLayout";
+import AddCourseModal from "../../components/CourseManagement/AddCourseModal";
+import ManageSettingsModal from "../../components/CourseManagement/ManageSettingsModal";
+import {
+  Search,
+  Filter,
+  BookOpen,
+  Users,
+  Edit,
+  Trash2,
+  Eye,
+  Archive,
+  CheckCircle,
+  Settings,
+} from "lucide-react";
+
+const AdminCoursesTable = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all");
+  const [filterCategory, setFilterCategory] = useState("all");
+  const [sortField, setSortField] = useState("id");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showManageModal, setShowManageModal] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const courses = [
+    {
+      id: 1,
+      title: "Advanced Web Development",
+      category: 1,
+      students: 1245,
+      status: "active",
+      createdDate: "2024-01-15",
+    },
+    {
+      id: 2,
+      title: "Digital Marketing Mastery",
+      category: 2,
+      students: 892,
+      status: "active",
+      createdDate: "2024-02-20",
+    },
+    {
+      id: 3,
+      title: "Machine Learning Fundamentals",
+      category: 3,
+      students: 2103,
+      status: "active",
+      createdDate: "2023-11-10",
+    },
+    {
+      id: 4,
+      title: "Graphic Design Essentials",
+      category: 4,
+      students: 1567,
+      status: "active",
+      createdDate: "2024-03-05",
+    },
+    {
+      id: 5,
+      title: "Business Analytics",
+      category: 5,
+      students: 743,
+      status: "active",
+      createdDate: "2024-04-12",
+    },
+    {
+      id: 6,
+      title: "Mobile App Development",
+      category: 1,
+      students: 1834,
+      status: "active",
+      createdDate: "2024-01-28",
+    },
+    {
+      id: 7,
+      title: "Photography Basics",
+      category: 6,
+      students: 456,
+      status: "Inactive",
+      createdDate: "2023-09-15",
+    },
+    {
+      id: 8,
+      title: "Financial Planning 101",
+      category: 7,
+      students: 982,
+      status: "active",
+      createdDate: "2024-02-14",
+    },
+    {
+      id: 9,
+      title: "Content Writing Masterclass",
+      category: 8,
+      students: 1123,
+      status: "active",
+      createdDate: "2024-03-22",
+    },
+    {
+      id: 10,
+      title: "Cybersecurity Essentials",
+      category: 1,
+      students: 1456,
+      status: "active",
+      createdDate: "2024-01-08",
+    },
+    {
+      id: 11,
+      title: "Spanish for Beginners",
+      category: 9,
+      students: 634,
+      status: "Inactive",
+      createdDate: "2023-10-20",
+    },
+    {
+      id: 12,
+      title: "Project Management Professional",
+      category: 5,
+      students: 2234,
+      status: "active",
+      createdDate: "2023-12-01",
+    },
+  ];
+
+  const categoryNames = {
+    1: "Technology",
+    2: "Marketing",
+    3: "Data Science",
+    4: "Design",
+    5: "Business",
+    6: "Arts",
+    7: "Finance",
+    8: "Writing",
+    9: "Languages",
+  };
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortField(field);
+      setSortOrder("asc");
+    }
+  };
+
+  const handleAddCourse = (data) => {
+    console.log("Course Added:", data);
+    setShowAddModal(false);
+    // Add logic to add course to the list
+  };
+
+  const handleManageSettings = (data) => {
+    console.log("Settings Updated:", data);
+    setShowManageModal(false);
+    setSelectedCourse(null);
+    // Add logic to update settings
+  };
+
+  const openManageSettings = (course) => {
+    setSelectedCourse(course);
+    setShowManageModal(true);
+  };
+
+  const filteredAndSortedCourses = courses
+    .filter((course) => {
+      const matchesSearch =
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.category.toString().includes(searchTerm) ||
+        course.id.toString().includes(searchTerm);
+      const matchesStatus =
+        filterStatus === "all" || course.status === filterStatus;
+      const matchesCategory =
+        filterCategory === "all" ||
+        course.category.toString() === filterCategory;
+      return matchesSearch && matchesStatus && matchesCategory;
+    })
+    .sort((a, b) => {
+      let aVal = a[sortField];
+      let bVal = b[sortField];
+
+      if (
+        sortField === "students" ||
+        sortField === "id" ||
+        sortField === "category"
+      ) {
+        aVal = Number(aVal);
+        bVal = Number(bVal);
+      }
+
+      if (sortOrder === "asc") {
+        return aVal > bVal ? 1 : -1;
+      } else {
+        return aVal < bVal ? 1 : -1;
+      }
+    });
+
+  const stats = {
+    total: courses.length,
+    active: courses.filter((c) => c.status === "active").length,
+    inactive: courses.filter((c) => c.status === "Inactive").length,
+    totalStudents: courses.reduce((sum, c) => sum + c.students, 0),
+  };
+
+  return (
+    <DashboardLayout>
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 p-6">
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-sm shadow-md p-6 border-l-4 border-orange-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-700 text-sm font-semibold uppercase">
+                  Total Courses
+                </p>
+                <p className="text-3xl font-bold text-gray-900 mt-1">
+                  {stats.total}
+                </p>
+              </div>
+              <div className="bg-orange-100 p-3 rounded-sm">
+                <BookOpen className="text-orange-600" size={24} />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-sm shadow-md p-6 border-l-4 border-emerald-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-700 text-sm font-semibold uppercase">
+                  Active Courses
+                </p>
+                <p className="text-3xl font-bold text-gray-900 mt-1">
+                  {stats.active}
+                </p>
+              </div>
+              <div className="bg-emerald-100 p-3 rounded-sm">
+                <CheckCircle className="text-emerald-600" size={24} />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-sm shadow-md p-6 border-l-4 border-rose-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-700 text-sm font-semibold uppercase">
+                  Inactive Courses
+                </p>
+                <p className="text-3xl font-bold text-gray-900 mt-1">
+                  {stats.inactive}
+                </p>
+              </div>
+              <div className="bg-rose-100 p-3 rounded-sm">
+                <Archive className="text-rose-600" size={24} />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-sm shadow-md p-6 border-l-4 border-amber-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-700 text-sm font-semibold uppercase">
+                  Total Students
+                </p>
+                <p className="text-3xl font-bold text-gray-900 mt-1">
+                  {stats.totalStudents.toLocaleString()}
+                </p>
+              </div>
+              <div className="bg-amber-100 p-3 rounded-sm">
+                <Users className="text-amber-600" size={24} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="bg-white rounded-sm shadow-md p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="relative">
+              <Search
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={20}
+              />
+              <input
+                type="text"
+                placeholder="Search by ID, name, category..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              />
+            </div>
+
+            <select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="px-4 py-3 border-2 border-gray-200 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+            >
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+
+            <select
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value)}
+              className="px-4 py-3 border-2 border-gray-200 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+            >
+              <option value="all">All Categories</option>
+              {Object.entries(categoryNames).map(([id, name]) => (
+                <option key={id} value={id}>
+                  {id} - {name}
+                </option>
+              ))}
+            </select>
+
+            <button
+              onClick={() => setShowAddModal(true)}
+              className="bg-orange-600 text-white px-6 py-3 rounded-sm font-bold hover:bg-orange-700 transition transform hover:scale-105 shadow-md"
+            >
+              + Add New Course
+            </button>
+          </div>
+        </div>
+
+        {/* Table */}
+        <div className="bg-white rounded-sm shadow-md overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-orange-600 text-white">
+                <tr>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("id")}
+                  >
+                    S.N{" "}
+                    {sortField === "id" && (sortOrder === "asc" ? "↑" : "↓")}
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+                    Icon
+                  </th>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("id")}
+                  >
+                    Course ID
+                  </th>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("title")}
+                  >
+                    Course Name{" "}
+                    {sortField === "title" && (sortOrder === "asc" ? "↑" : "↓")}
+                  </th>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("category")}
+                  >
+                    Category{" "}
+                    {sortField === "category" &&
+                      (sortOrder === "asc" ? "↑" : "↓")}
+                  </th>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("createdDate")}
+                  >
+                    Creation Date{" "}
+                    {sortField === "createdDate" &&
+                      (sortOrder === "asc" ? "↑" : "↓")}
+                  </th>
+                  <th
+                    className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider cursor-pointer hover:bg-orange-700 whitespace-nowrap"
+                    onClick={() => handleSort("students")}
+                  >
+                    Students{" "}
+                    {sortField === "students" &&
+                      (sortOrder === "asc" ? "↑" : "↓")}
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+                    Status
+                  </th>
+                  <th className="px-6 py-4 text-center text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {filteredAndSortedCourses.map((course, index) => (
+                  <tr
+                    key={course.id}
+                    className="hover:bg-orange-50 transition-colors"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {index + 1}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="bg-gradient-to-br from-orange-500 to-amber-500 w-10 h-10 rounded-sm flex items-center justify-center">
+                        <BookOpen className="text-white" size={20} />
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-orange-600">
+                      CRS-{course.id.toString().padStart(4, "0")}
+                    </td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900 max-w-xs">
+                      {course.title}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="px-3 py-1 text-xs font-semibold rounded-sm bg-orange-100 text-orange-700">
+                        {course.category}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {new Date(course.createdDate).toLocaleDateString("en-GB")}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex items-center gap-1">
+                        <Users size={16} className="text-amber-600" />
+                        <span className="font-semibold text-gray-900">
+                          {course.students.toLocaleString()}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span
+                        className={`inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-sm ${
+                          course.status === "active"
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-gray-100 text-gray-700"
+                        }`}
+                      >
+                        {course.status === "active" ? (
+                          <>
+                            <CheckCircle size={14} />
+                            Active
+                          </>
+                        ) : (
+                          <>
+                            <Archive size={14} />
+                            Inactive
+                          </>
+                        )}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          className="p-2 hover:bg-blue-100 rounded-sm transition text-blue-600"
+                          title="View"
+                        >
+                          <Eye size={18} />
+                        </button>
+                        <button
+                          className="p-2 hover:bg-amber-100 rounded-sm transition text-amber-600"
+                          title="Edit"
+                        >
+                          <Edit size={18} />
+                        </button>
+                        <button
+                          className="p-2 hover:bg-purple-100 rounded-sm transition text-purple-600"
+                          title="Settings"
+                          onClick={() => openManageSettings(course)}
+                        >
+                          <Settings size={18} />
+                        </button>
+                        <button
+                          className="p-2 hover:bg-rose-100 rounded-sm transition text-rose-600"
+                          title="Delete"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {filteredAndSortedCourses.length === 0 && (
+            <div className="p-12 text-center">
+              <div className="bg-gray-100 w-20 h-20 rounded-sm flex items-center justify-center mx-auto mb-4">
+                <Filter className="text-gray-400" size={40} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                No courses found
+              </h3>
+              <p className="text-gray-600">
+                Try adjusting your search or filter criteria
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer Info */}
+        <div className="mt-6 bg-white rounded-sm shadow-md p-4 flex items-center justify-between text-sm text-gray-700">
+          <div>
+            Showing{" "}
+            <span className="font-semibold text-gray-900">
+              {filteredAndSortedCourses.length}
+            </span>{" "}
+            of{" "}
+            <span className="font-semibold text-gray-900">
+              {courses.length}
+            </span>{" "}
+            courses
+          </div>
+          <div className="text-gray-600">Click column headers to sort</div>
+        </div>
+
+        {/* Modals */}
+        <AddCourseModal
+          isOpen={showAddModal}
+          onClose={() => setShowAddModal(false)}
+          onSubmit={handleAddCourse}
+        />
+        <ManageSettingsModal
+          isOpen={showManageModal}
+          onClose={() => {
+            setShowManageModal(false);
+            setSelectedCourse(null);
+          }}
+          onSubmit={handleManageSettings}
+          course={selectedCourse}
+        />
+      </div>
+    </DashboardLayout>
+  );
+};
+
+export default AdminCoursesTable;

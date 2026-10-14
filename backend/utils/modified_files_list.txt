@@ -1,0 +1,20 @@
+Files modified in today's session (to be pushed to production):
+
+Frontend:
+1. frontend/src/pages/Admin/ClaimManagement.jsx
+2. frontend/src/pages/Admin/AdminCampManagement.jsx
+3. frontend/src/pages/Admin/WalletTransactions.jsx
+4. frontend/src/auth/auth.js
+5. frontend/src/auth/AuthProvider.jsx
+6. frontend/src/pages/Login.jsx
+7. frontend/src/pages/ForgotPassword.jsx
+8. frontend/src/components/auth/CreatePasswordModal.jsx (New component)
+9. frontend/src/App.jsx
+10. frontend/src/utils/api.js
+
+Backend:
+11. backend/controllers/claimController.js
+12. backend/routes/wallet.js
+13. backend/routes/auth.js
+14. backend/services/emailService.js
+15. backend/models/User.js (if any changes were made to the model)

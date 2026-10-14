@@ -1,0 +1,211 @@
+[
+  {
+    "checkIn": {
+      "location": {
+        "lat": 21.5360183,
+        "lng": 81.4420417
+      },
+      "time": "2026-05-19T17:24:10.315Z",
+      "selfie": null
+    },
+    "checkOut": {
+      "location": {
+        "lat": 21.5360167,
+        "lng": 81.4420232
+      },
+      "time": "2026-05-19T17:25:40.654Z"
+    },
+    "_id": "6a0c9cba7a73b9b59399155a",
+    "date": "2026-05-19",
+    "employeeId": "69edc9615ea3db7079461094",
+    "__v": 0,
+    "createdAt": "2026-05-19T17:24:10.316Z",
+    "status": "Completed",
+    "updatedAt": "2026-05-19T17:25:40.654Z",
+    "workingHours": 0.03
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 26.10295974519499,
+        "lng": 85.36016302378825
+      },
+      "time": "2026-05-19T16:58:25.021Z",
+      "selfie": "/uploads/attendance_selfies/selfie_69cba6fd42a5ea1577a8e4af_1779209905020.jpg"
+    },
+    "_id": "6a0c96b17a73b9b593991559",
+    "employeeId": "69cba6fd42a5ea1577a8e4af",
+    "date": "2026-05-19",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:58:25.022Z",
+    "status": "Checked-In",
+    "updatedAt": "2026-05-19T16:58:25.022Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 19.8689,
+        "lng": 75.7295
+      },
+      "time": "2026-05-19T16:54:25.176Z",
+      "selfie": "/uploads/attendance_selfies/selfie_69d397282c15c8b0b5ce9113_1779209665175.jpg"
+    },
+    "_id": "6a0c95c17a73b9b593991558",
+    "date": "2026-05-19",
+    "employeeId": "69d397282c15c8b0b5ce9113",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:54:25.176Z",
+    "status": "Checked-In",
+    "updatedAt": "2026-05-19T16:54:25.176Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": null,
+      "time": "2026-05-19T16:54:22.592Z",
+      "selfie": null
+    },
+    "_id": "6a0c95be7a73b9b593991557",
+    "date": "2026-05-19",
+    "employeeId": "69ef4c9dc1b19782af13cfc1",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:54:22.593Z",
+    "status": "Checked-In",
+    "updatedAt": "2026-05-19T16:54:22.593Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 27.065265,
+        "lng": 71.474885
+      },
+      "time": "2026-05-19T16:22:19.072Z",
+      "selfie": null
+    },
+    "checkOut": {
+      "location": {
+        "lat": 27.0652583,
+        "lng": 71.4748567
+      },
+      "time": "2026-05-19T16:32:56.374Z"
+    },
+    "_id": "6a0c8e3ba5e3711f95b888ac",
+    "date": "2026-05-19",
+    "employeeId": "69d700ff3aaa16a457508b10",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:22:19.073Z",
+    "status": "Completed",
+    "updatedAt": "2026-05-19T16:32:56.375Z",
+    "workingHours": 0.18
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 23.352892109245435,
+        "lng": 85.34867379065854
+      },
+      "time": "2026-05-19T16:21:36.700Z",
+      "selfie": null
+    },
+    "checkOut": {
+      "location": {
+        "lat": 23.352892109245435,
+        "lng": 85.34867379065854
+      },
+      "time": "2026-05-19T16:21:48.169Z"
+    },
+    "_id": "6a0c8e10a5e3711f95b888ab",
+    "employeeId": "69ef395dc1b19782af0efbb5",
+    "date": "2026-05-19",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:21:36.701Z",
+    "status": "Completed",
+    "updatedAt": "2026-05-19T16:21:48.170Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 26.6871525,
+        "lng": 75.5807909
+      },
+      "time": "2026-05-19T16:18:55.243Z",
+      "selfie": "/uploads/attendance_selfies/selfie_69d9ac320b0aa448310b39a0_1779207535242.jpg"
+    },
+    "_id": "6a0c8d6fa5e3711f95b888aa",
+    "date": "2026-05-19",
+    "employeeId": "69d9ac320b0aa448310b39a0",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:18:55.243Z",
+    "status": "Checked-In",
+    "updatedAt": "2026-05-19T16:18:55.243Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": null,
+      "time": "2026-05-19T16:12:20.509Z",
+      "selfie": null
+    },
+    "_id": "6a0c8be4a5e3711f95b888a9",
+    "date": "2026-05-19",
+    "employeeId": "69f9b37a592c7607a49e6bb6",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:12:20.510Z",
+    "status": "Checked-In",
+    "updatedAt": "2026-05-19T16:12:20.510Z",
+    "workingHours": 0
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 9.7727119,
+        "lng": 78.93548
+      },
+      "time": "2026-05-19T16:08:55.271Z",
+      "selfie": null
+    },
+    "checkOut": {
+      "location": {
+        "lat": 9.772712,
+        "lng": 78.93548
+      },
+      "time": "2026-05-19T16:09:46.140Z"
+    },
+    "_id": "6a0c8b17a5e3711f95b888a8",
+    "employeeId": "69cd017b34054c4d1ffd5df2",
+    "date": "2026-05-19",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:08:55.272Z",
+    "status": "Completed",
+    "updatedAt": "2026-05-19T16:09:46.141Z",
+    "workingHours": 0.01
+  },
+  {
+    "checkIn": {
+      "location": {
+        "lat": 23.3592625,
+        "lng": 77.9365623
+      },
+      "time": "2026-05-19T16:01:22.563Z",
+      "selfie": "/uploads/attendance_selfies/selfie_69dc7aa5f215a66d5b2d93df_1779206482562.jpg"
+    },
+    "checkOut": {
+      "location": {
+        "lat": 23.3592625,
+        "lng": 77.9365623
+      },
+      "time": "2026-05-19T16:01:32.329Z"
+    },
+    "_id": "6a0c8952a5e3711f95b888a7",
+    "employeeId": "69dc7aa5f215a66d5b2d93df",
+    "date": "2026-05-19",
+    "__v": 0,
+    "createdAt": "2026-05-19T16:01:22.563Z",
+    "status": "Completed",
+    "updatedAt": "2026-05-19T16:01:32.330Z",
+    "workingHours": 0
+  }
+]
