@@ -2,7 +2,7 @@ import express from "express";
 import { body, validationResult } from "express-validator";
 import Scroller from "../models/Scroller.js";
 import { authenticate } from "../middleware/auth.js";
-import { upload } from "../middleware/upload.js";
+import { upload, uploadToCloudinary, deleteCloudinaryImage } from "../middleware/upload.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -119,30 +119,17 @@ router.post(
         });
       }
 
-      // Generate unique filename
-      const timestamp = Date.now();
-      const randomStr = Math.random().toString(36).substring(2, 15);
-      const originalName = req.file.originalname || "image";
-      const ext = path.extname(originalName) || ".jpg";
-      const filename = `${timestamp}_${randomStr}${ext}`;
-      const filepath = path.join(scrollerUploadsDir, filename);
-
-      // Save file to local storage
-      fs.writeFileSync(filepath, req.file.buffer);
-
-      // Get base URL from request or environment
-      const protocol = req.protocol || "http";
-      const host = req.get("host") || process.env.BACKEND_URL || `localhost:${process.env.PORT || 3006}`;
-      const baseUrl = `${protocol}://${host}`;
-
-      // Return full local file URL
-      const fileUrl = `${baseUrl}/api/files/scroller/${filename}`;
+      // Upload to Cloudinary (persistent storage — survives backend restarts/redeploys)
+      const { url: fileUrl, public_id: cloudinaryPublicId } = await uploadToCloudinary(
+        req.file.buffer,
+        "jssa/scroller"
+      );
 
       const scroller = new Scroller({
         title: req.body.title || "",
         description: req.body.description || "",
         imageUrl: fileUrl,
-        cloudinaryPublicId: "", // Keep for backward compatibility but empty
+        cloudinaryPublicId,
         imageName: req.file.originalname,
         uploadedBy: req.user.id,
         order: parseInt(req.body.order) || 0,
@@ -253,10 +240,13 @@ router.delete("/:id", async (req, res) => {
       });
     }
 
-    // Delete file from local storage
+    // Delete image from Cloudinary (if it has a Cloudinary public ID)
     try {
-      // Extract filename from imageUrl
-      if (image.imageUrl && image.imageUrl.includes('/api/files/scroller/')) {
+      if (image.cloudinaryPublicId) {
+        await deleteCloudinaryImage(image.cloudinaryPublicId);
+        console.log("✅ Deleted scroller image from Cloudinary:", image.cloudinaryPublicId);
+      } else if (image.imageUrl && image.imageUrl.includes('/api/files/scroller/')) {
+        // Legacy local-storage image — try to delete from local disk too
         const filename = image.imageUrl.split('/api/files/scroller/')[1];
         if (filename) {
           const filepath = path.join(scrollerUploadsDir, filename);
