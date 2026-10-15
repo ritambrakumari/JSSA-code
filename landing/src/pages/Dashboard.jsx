@@ -5304,20 +5304,17 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           .nh-burger,.nh-drawer{display:none;}
         }
         @media(max-width:760px){
-          .nh-main{padding:8px 20px;flex-wrap:wrap;}
-          .nh-brand{order:1;}
-          .nh-access{order:1;}
-          .nh-login{order:1;margin-left:auto;}
-          .nh-burger{order:1;}
-          .nh-nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;order:5;gap:2px;}
-          .nh-nav::-webkit-scrollbar{display:none;}
-          .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;}
+          .nh-main{padding:8px 16px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+          .nh-main::-webkit-scrollbar{display:none;}
+          .nh-nav{flex:0 0 auto;flex-wrap:nowrap;gap:2px;}
+          .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;white-space:nowrap;}
+          .nh-search{flex-basis:150px;flex-shrink:0;}
+          .nh-brand img{height:50px;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
           .nh-hide-sm{display:none;}
-          .nh-main{padding:8px 12px;gap:8px;flex-wrap:wrap;}
-          .nh-brand img{height:58px;}
+          .nh-brand img{height:44px;}
           .nh-login{padding:8px 14px;font-size:12px;}
           .nh-drawer{padding:4px 12px 10px;}
         }
@@ -5354,16 +5351,19 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
               {language === "hi" ? item.hi : item.en}
             </button>
           ))}
-          <button className="nh-link nh-donate-nav" onClick={() => go("donate")}>
-            {language === "hi" ? "अभी दान करें" : "Donate Now"}
-          </button>
         </nav>
+        <button className="nh-donate" onClick={() => go("donate")}>
+          {language === "hi" ? "अभी दान करें" : "Donate Now"}
+        </button>
         <div className="nh-access" aria-label="Language">
           <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
           <span>|</span>
           <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
         </div>
-        <span className="nh-break-login" aria-hidden="true"></span>
+        <form className="nh-search" onSubmit={search} role="search">
+          <input aria-label="Search pages" placeholder="Search here..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+          <button type="submit" aria-label="Search">⌕</button>
+        </form>
         <a href={LOGIN_URL} className="nh-login">LOGIN</a>
         <button className="nh-burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           {open ? "✕" : "☰"}
