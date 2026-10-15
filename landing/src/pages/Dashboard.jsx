@@ -5270,6 +5270,7 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         .nh-main{background:#fff;border-bottom:1px solid #e5e7eb;padding:8px 40px;display:flex;align-items:center;gap:12px;}
         .nh-brand{background:none;border:0;padding:0;cursor:pointer;flex-shrink:0;display:flex;align-items:center;}
         .nh-brand img{height:106px;width:auto;max-width:500px;object-fit:contain;display:block;}
+        .nh-scroll-row{display:contents;}
         .nh-nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;}
         .nh-link,.nh-donate,.nh-login,.nh-lang,.nh-burger,.nh-brand,.nh-search input,.nh-search button{-webkit-tap-highlight-color:transparent;}
         .nh-link{background:none;border:0;padding:9px 10px;font-size:15px;font-weight:700;color:#1f2937;cursor:pointer;border-radius:6px;white-space:nowrap;}
@@ -5304,12 +5305,17 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           .nh-burger,.nh-drawer{display:none;}
         }
         @media(max-width:760px){
-          .nh-main{padding:8px 16px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-          .nh-main::-webkit-scrollbar{display:none;}
-          .nh-nav{flex:0 0 auto;flex-wrap:nowrap;gap:2px;}
-          .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;white-space:nowrap;}
-          .nh-search{flex-basis:150px;flex-shrink:0;}
+          .nh-main{padding:8px 16px;flex-wrap:wrap;overflow-x:visible;row-gap:10px;column-gap:8px;}
+          .nh-brand{flex:0 0 100%;}
           .nh-brand img{height:50px;}
+          .nh-scroll-row{display:flex;align-items:center;flex:0 0 100%;flex-wrap:nowrap;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+          .nh-scroll-row::-webkit-scrollbar{display:none;}
+          .nh-nav{flex:0 0 auto;flex-wrap:nowrap;gap:2px;}
+          .nh-link{font-size:12px;padding:7px 8px;white-space:nowrap;flex-shrink:0;}
+          .nh-donate,.nh-donate-nav{flex:0 0 auto;}
+          .nh-access{flex:0 0 auto;margin-left:0;}
+          .nh-search{flex:1 1 140px;min-width:0;}
+          .nh-login{flex:0 0 auto;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
@@ -5317,6 +5323,11 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           .nh-brand img{height:44px;}
           .nh-login{padding:8px 14px;font-size:12px;}
           .nh-drawer{padding:4px 12px 10px;}
+          .nh-search{flex-basis:110px;}
+        }
+        @media(max-width:340px){
+          .nh-search{flex:1 1 100%;}
+          .nh-donate,.nh-access,.nh-login{flex:0 0 auto;}
         }
       `}</style>
 
@@ -5335,30 +5346,32 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         <button type="button" className="nh-brand" onClick={() => go("home")} aria-label="Home">
           <img src={logo} alt="Jan Swasthya Sahayata Abhiyan" />
         </button>
-        <nav className="nh-nav">
-          {homeNavLinks.map((item) => (
-            <button key={item.target} className={`nh-link ${selected === item.target ? "on" : ""}`} onClick={() => {
-              setOpen(false);
-              setSelected(item.target);
-              if (item.target === "top") go("home");
-              else if (item.target === "about") go("about");
-              else if (item.target === "jobs") go("jobs");
-              else if (item.target === "notifications") go("notifications");
-              else if (item.target === "gallery") go("gallery");
-              else if (item.target === "feed") go("feeds");
-              else if (item.target === "news") go("news");
-            }}>
-              {language === "hi" ? item.hi : item.en}
-            </button>
-          ))}
-        </nav>
-        <button className="nh-donate" onClick={() => go("donate")}>
-          {language === "hi" ? "अभी दान करें" : "Donate Now"}
-        </button>
-        <div className="nh-access" aria-label="Language">
-          <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
-          <span>|</span>
-          <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
+        <div className="nh-scroll-row">
+          <nav className="nh-nav">
+            {homeNavLinks.map((item) => (
+              <button key={item.target} className={`nh-link ${selected === item.target ? "on" : ""}`} onClick={() => {
+                setOpen(false);
+                setSelected(item.target);
+                if (item.target === "top") go("home");
+                else if (item.target === "about") go("about");
+                else if (item.target === "jobs") go("jobs");
+                else if (item.target === "notifications") go("notifications");
+                else if (item.target === "gallery") go("gallery");
+                else if (item.target === "feed") go("feeds");
+                else if (item.target === "news") go("news");
+              }}>
+                {language === "hi" ? item.hi : item.en}
+              </button>
+            ))}
+          </nav>
+          <button className="nh-donate" onClick={() => go("donate")}>
+            {language === "hi" ? "अभी दान करें" : "Donate Now"}
+          </button>
+          <div className="nh-access" aria-label="Language">
+            <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
+            <span>|</span>
+            <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
+          </div>
         </div>
         <form className="nh-search" onSubmit={search} role="search">
           <input aria-label="Search pages" placeholder="Search here..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
