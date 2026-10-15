@@ -5271,6 +5271,7 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         .nh-brand{background:none;border:0;padding:0;cursor:pointer;flex-shrink:0;display:flex;align-items:center;}
         .nh-brand img{height:106px;width:auto;max-width:500px;object-fit:contain;display:block;}
         .nh-nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;}
+        .nh-toprow{display:flex;align-items:center;gap:12px;flex-shrink:0;}
         .nh-link,.nh-donate,.nh-login,.nh-lang,.nh-burger,.nh-brand,.nh-search input,.nh-search button{-webkit-tap-highlight-color:transparent;}
         .nh-link{background:none;border:0;padding:9px 10px;font-size:15px;font-weight:700;color:#1f2937;cursor:pointer;border-radius:6px;white-space:nowrap;}
         .nh-link:hover{background:#f1f5f9;}
@@ -5303,19 +5304,18 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         }
         @media(max-width:760px){
           .nh-main{padding:8px 20px;flex-wrap:wrap;}
+          .nh-toprow{margin-left:auto;order:2;}
           .nh-nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;order:5;gap:2px;}
           .nh-nav::-webkit-scrollbar{display:none;}
           .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;}
-          .nh-search{margin-left:auto;}
-          .nh-login{margin-left:auto;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
           .nh-hide-sm{display:none;}
           .nh-main{padding:8px 12px;gap:8px;flex-wrap:wrap;}
           .nh-brand img{height:58px;}
-          .nh-search{order:4;flex:1 1 100%;}
-          .nh-login{padding:8px 14px;font-size:12px;margin-left:auto;}
+          .nh-toprow{gap:8px;}
+          .nh-login{padding:8px 14px;font-size:12px;}
           .nh-drawer{padding:4px 12px 10px;}
         }
       `}</style>
@@ -5352,15 +5352,17 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
             </button>
           ))}
         </nav>
-        <button className="nh-donate" onClick={() => go("donate")}>
-          {language === "hi" ? "अभी दान करें" : "Donate Now"}
-        </button>
-        <div className="nh-access" aria-label="Language">
-          <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
-          <span>|</span>
-          <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
+        <div className="nh-toprow">
+          <button className="nh-donate" onClick={() => go("donate")}>
+            {language === "hi" ? "अभी दान करें" : "Donate Now"}
+          </button>
+          <div className="nh-access" aria-label="Language">
+            <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
+            <span>|</span>
+            <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
+          </div>
+          <a href={LOGIN_URL} className="nh-login">LOGIN</a>
         </div>
-        <a href={LOGIN_URL} className="nh-login">LOGIN</a>
         <button className="nh-burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           {open ? "✕" : "☰"}
         </button>
