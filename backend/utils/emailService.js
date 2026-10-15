@@ -49,11 +49,11 @@ export const sendMOUEmail = async (options) => {
       return { success: false, error: 'Email configuration missing' };
     }
 
-    const logoPath = path.resolve(__dirname, '../../frontend/src/assets/JSSAogo.png');
+    const logoPath = path.resolve(__dirname, '../../admin/src/assets/img0.png');
 
     const htmlContent = `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d6e2f1; border-radius: 10px; overflow: hidden;">
-        <div style="background-color: #1761b0; background-image: linear-gradient(100deg, #3a80d2 0%, #5596df 55%, #76ade9 100%); padding: 24px 20px; text-align: center;">
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #D9F99D; border-radius: 10px; overflow: hidden;">
+        <div style="background-color: #3F6212; background-image: linear-gradient(100deg, #3F6212 0%, #4D7C0F 55%, #65A30D 100%); padding: 24px 20px; text-align: center;">
           <div style="display: inline-block; background-color: #ffffff; border-radius: 10px; padding: 8px 14px;">
             <img src="cid:jssalogo" alt="JSSA Logo" style="max-height: 60px; display: block;" />
           </div>
@@ -62,23 +62,23 @@ export const sendMOUEmail = async (options) => {
         </div>
 
         <div style="padding: 30px; color: #1f2d3d; line-height: 1.6;">
-          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #123b68;">Dear ${candidateName},</p>
-          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #123b68;">प्रिय ${candidateName},</p>
+          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #1A2E05;">Dear ${candidateName},</p>
+          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #1A2E05;">प्रिय ${candidateName},</p>
 
-          <p style="font-size: 19px; color: #1761b0; font-weight: bold; margin-bottom: 0;">Congratulations! / बधाई हो!</p>
+          <p style="font-size: 19px; color: #4D7C0F; font-weight: bold; margin-bottom: 0;">Congratulations! / बधाई हो!</p>
 
           <p style="margin-top: 10px;">
             We are pleased to inform you that you have <strong>PASSED</strong> in JAN SWASTHYA SAHAYTA ABHIYAN (JSSA).<br/>
             हमें आपको सूचित करते हुए खुशी हो रही है कि आपने जन स्वास्थ्य सहायता अभियान (JSSA) में <strong>उत्तीर्ण (PASS)</strong> प्राप्त किया है।
           </p>
 
-          <div style="background-color: #f3f8fe; border: 1px solid #d6e4f5; border-left: 5px solid #1761b0; padding: 18px 20px; margin: 25px 0; border-radius: 8px;">
+          <div style="background-color: #F7FEE7; border: 1px solid #D9F99D; border-left: 5px solid #4D7C0F; padding: 18px 20px; margin: 25px 0; border-radius: 8px;">
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px; border-bottom: 1px solid #e3ecf7;">
                   Application No / आवेदन संख्या:
                 </td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #123b68; border-bottom: 1px solid #e3ecf7;">
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1A2E05; border-bottom: 1px solid #e3ecf7;">
                   ${applicationNo}
                 </td>
               </tr>
@@ -86,7 +86,7 @@ export const sendMOUEmail = async (options) => {
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px; border-bottom: 1px solid #e3ecf7;">
                   Marks Obtained / प्राप्त अंक:
                 </td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #123b68; border-bottom: 1px solid #e3ecf7;">
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1A2E05; border-bottom: 1px solid #e3ecf7;">
                   ${marks}
                 </td>
               </tr>
@@ -94,7 +94,7 @@ export const sendMOUEmail = async (options) => {
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px; border-bottom: 1px solid #e3ecf7;">
                   MOU Process Start Date / MOU प्रारंभ तिथि:
                 </td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1761b0; border-bottom: 1px solid #e3ecf7;">
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #4D7C0F; border-bottom: 1px solid #e3ecf7;">
                   ${mouStart}
                 </td>
               </tr>
@@ -115,7 +115,7 @@ export const sendMOUEmail = async (options) => {
           </p>
 
           <div style="text-align: center; margin: 32px 0;">
-            <a href="https://jssabhiyan.com" style="background-color: #1761b0; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Dashboard Login / लॉगिन करें</a>
+            <a href="https://jssabhiyan.com" style="background-color: #4D7C0F; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Dashboard Login / लॉगिन करें</a>
           </div>
 
           <p style="font-size: 12px; color: #6b7d93; font-style: italic; border-top: 1px solid #e3ecf7; padding-top: 12px; margin-top: 30px;">
@@ -124,7 +124,7 @@ export const sendMOUEmail = async (options) => {
           </p>
         </div>
 
-        <div style="background-color: #123b68; padding: 18px 20px; text-align: center; font-size: 11px; color: #c9d8ea;">
+        <div style="background-color: #1A2E05; padding: 18px 20px; text-align: center; font-size: 11px; color: #D9F99D;">
           <p style="margin: 0;">&copy; ${new Date().getFullYear()} Jan Swasthya Sahayta Abhiyan (JSSA). All Rights Reserved.</p>
         </div>
       </div>
@@ -170,29 +170,29 @@ export const sendExamAssignmentEmail = async (options) => {
       return { success: false, error: 'Email configuration missing' };
     }
 
-    const logoPath = path.resolve(__dirname, '../../frontend/src/assets/JSSAogo.png');
+    const logoPath = path.resolve(__dirname, '../../admin/src/assets/img0.png');
 
     const htmlContent = `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d6e2f1; border-radius: 10px; overflow: hidden;">
-        <div style="background-color: #1761b0; background-image: linear-gradient(100deg, #3a80d2 0%, #5596df 55%, #76ade9 100%); padding: 24px 20px; text-align: center; color: #ffffff;">
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #D9F99D; border-radius: 10px; overflow: hidden;">
+        <div style="background-color: #3F6212; background-image: linear-gradient(100deg, #3F6212 0%, #4D7C0F 55%, #65A30D 100%); padding: 24px 20px; text-align: center; color: #ffffff;">
           <div style="display: inline-block; background-color: #ffffff; border-radius: 10px; padding: 8px 14px;">
             <img src="cid:jssalogo" alt="Logo" style="max-height: 60px; display: block;" />
           </div>
           <h2 style="color: #ffffff; margin: 14px 0 0; font-size: 20px; letter-spacing: 0.5px;">JAN SWASTHYA SAHAYTA ABHIYAN</h2>
         </div>
         <div style="padding: 30px; color: #1f2d3d; line-height: 1.6;">
-          <p style="color: #123b68;">Dear <strong>${candidateName}</strong>,</p>
+          <p style="color: #1A2E05;">Dear <strong>${candidateName}</strong>,</p>
           <p>Your exam for <strong>JAN SWASTHYA SAHAYTA ABHIYAN</strong> has been scheduled.</p>
-          <div style="background-color: #f3f8fe; border: 1px solid #d6e4f5; border-left: 5px solid #1761b0; padding: 15px 20px; margin: 20px 0; border-radius: 8px;">
-            <p style="margin: 5px 0; color: #123b68;"><strong>Start Date:</strong> ${startDate}</p>
-            <p style="margin: 5px 0; color: #123b68;"><strong>End Date:</strong> ${endDate}</p>
+          <div style="background-color: #F7FEE7; border: 1px solid #D9F99D; border-left: 5px solid #4D7C0F; padding: 15px 20px; margin: 20px 0; border-radius: 8px;">
+            <p style="margin: 5px 0; color: #1A2E05;"><strong>Start Date:</strong> ${startDate}</p>
+            <p style="margin: 5px 0; color: #1A2E05;"><strong>End Date:</strong> ${endDate}</p>
           </div>
           <p>Please login to your dashboard to appear in the exam and submit it within the given time.</p>
           <div style="text-align: center; margin-top: 30px;">
-            <a href="https://jssabhiyan.com" style="background-color: #1761b0; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 15px;">Login to Dashboard</a>
+            <a href="https://jssabhiyan.com" style="background-color: #4D7C0F; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 15px;">Login to Dashboard</a>
           </div>
         </div>
-        <div style="background-color: #123b68; height: 8px; line-height: 8px; font-size: 0;">&nbsp;</div>
+        <div style="background-color: #1A2E05; height: 8px; line-height: 8px; font-size: 0;">&nbsp;</div>
       </div>
     `;
 
@@ -233,7 +233,7 @@ export const sendMeetingInvitationEmail = async (options) => {
       return { success: false, error: 'Email configuration missing' };
     }
 
-    const logoPath = path.resolve(__dirname, '../../frontend/src/assets/JSSAogo.png');
+    const logoPath = path.resolve(__dirname, '../../admin/src/assets/img0.png');
 
     const formattedDate = scheduledFor ? new Date(scheduledFor).toLocaleString('en-IN', {
       day: '2-digit',
@@ -244,59 +244,59 @@ export const sendMeetingInvitationEmail = async (options) => {
     }) : 'Instant / अभी';
 
     const htmlContent = `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d6e2f1; border-radius: 10px; overflow: hidden;">
-        <div style="background-color: #1761b0; background-image: linear-gradient(100deg, #3a80d2 0%, #5596df 55%, #76ade9 100%); padding: 24px 20px; text-align: center;">
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #D9F99D; border-radius: 10px; overflow: hidden;">
+        <div style="background-color: #3F6212; background-image: linear-gradient(100deg, #3F6212 0%, #4D7C0F 55%, #65A30D 100%); padding: 24px 20px; text-align: center;">
           <div style="display: inline-block; background-color: #ffffff; border-radius: 10px; padding: 8px 14px;">
             <img src="cid:jssalogo" alt="JSSA Logo" style="max-height: 60px; display: block;" />
           </div>
           <h1 style="color: #ffffff; margin: 14px 0 4px; font-size: 21px; letter-spacing: 0.5px; font-weight: 700;">जन स्वास्थ्य सहायता अभियान</h1>
           <p style="color: #ffffff; margin: 0; font-size: 14px; opacity: 0.92;">Jan Swasthya Sahayta Abhiyan</p>
         </div>
-        
+
         <div style="padding: 30px; color: #1f2d3d; line-height: 1.6;">
-          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #123b68;">Dear ${participantName},</p>
-          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #123b68;">प्रिय ${participantName},</p>
-          
-          <p style="font-size: 19px; color: #1761b0; font-weight: bold; margin-bottom: 20px;">Meeting Invitation / मीटिंग आमंत्रण</p>
-          
+          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #1A2E05;">Dear ${participantName},</p>
+          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #1A2E05;">प्रिय ${participantName},</p>
+
+          <p style="font-size: 19px; color: #4D7C0F; font-weight: bold; margin-bottom: 20px;">Meeting Invitation / मीटिंग आमंत्रण</p>
+
           <p>
             You have been invited to a meeting by <strong>${senderName}</strong>.<br/>
             आपको <strong>${senderName}</strong> द्वारा एक मीटिंग में आमंत्रित किया गया है।
           </p>
-          
-          <div style="background-color: #f3f8fe; border: 1px solid #d6e4f5; border-left: 5px solid #1761b0; padding: 18px 20px; margin: 25px 0; border-radius: 8px;">
+
+          <div style="background-color: #F7FEE7; border: 1px solid #D9F99D; border-left: 5px solid #4D7C0F; padding: 18px 20px; margin: 25px 0; border-radius: 8px;">
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px;">Meeting Title / मीटिंग का नाम:</td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #123b68;">${title}</td>
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1A2E05;">${title}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px;">Meeting Type / मीटिंग का प्रकार:</td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #123b68; text-transform: capitalize;">${type} Meet</td>
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1A2E05; text-transform: capitalize;">${type} Meet</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px;">Scheduled For / निर्धारित समय:</td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1761b0;">${formattedDate}</td>
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #4D7C0F;">${formattedDate}</td>
               </tr>
             </table>
           </div>
-          
+
           <p style="font-size: 14px; text-align: center; background: #fff8e1; padding: 10px; border: 1px dashed #ffc107; margin: 20px 0;">
             Please login to your dashboard to join the meeting.<br/>
             मीटिंग में शामिल होने के लिए कृपया अपने डैशबोर्ड पर लॉगिन करें।
           </p>
-          
+
           <div style="text-align: center; margin: 35px 0;">
-            <a href="https://jssabhiyan.com" style="background-color: #1761b0; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Login to Dashboard / लॉगिन करें</a>
+            <a href="https://jssabhiyan.com" style="background-color: #4D7C0F; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Login to Dashboard / लॉगिन करें</a>
           </div>
-          
+
           <p style="font-size: 12px; color: #6b7d93; font-style: italic; border-top: 1px solid #e3ecf7; padding-top: 12px; margin-top: 30px;">
             *This is an automated message. Please do not reply to this email.<br/>
             यह एक स्वचालित संदेश है। कृपया इस ईमेल का उत्तर न दें।
           </p>
         </div>
-        
-        <div style="background-color: #123b68; padding: 18px 20px; text-align: center; font-size: 11px; color: #c9d8ea;">
+
+        <div style="background-color: #1A2E05; padding: 18px 20px; text-align: center; font-size: 11px; color: #D9F99D;">
           <p style="margin: 0;">&copy; ${new Date().getFullYear()} Jan Swasthya Sahayta Abhiyan (JSSA). All Rights Reserved.</p>
         </div>
       </div>
@@ -338,7 +338,7 @@ export const sendMeetingReminderEmail = async (options) => {
       return { success: false, error: 'Email configuration missing' };
     }
 
-    const logoPath = path.resolve(__dirname, '../../frontend/src/assets/JSSAogo.png');
+    const logoPath = path.resolve(__dirname, '../../admin/src/assets/img0.png');
 
     const formattedDate = scheduledFor ? new Date(scheduledFor).toLocaleString('en-IN', {
       day: '2-digit',
@@ -349,31 +349,31 @@ export const sendMeetingReminderEmail = async (options) => {
     }) : 'Instant / अभी';
 
     const htmlContent = `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d6e2f1; border-radius: 10px; overflow: hidden;">
-        <div style="background-color: #1761b0; background-image: linear-gradient(100deg, #3a80d2 0%, #5596df 55%, #76ade9 100%); padding: 24px 20px; text-align: center;">
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #D9F99D; border-radius: 10px; overflow: hidden;">
+        <div style="background-color: #3F6212; background-image: linear-gradient(100deg, #3F6212 0%, #4D7C0F 55%, #65A30D 100%); padding: 24px 20px; text-align: center;">
           <div style="display: inline-block; background-color: #ffffff; border-radius: 10px; padding: 8px 14px;">
             <img src="cid:jssalogo" alt="JSSA Logo" style="max-height: 60px; display: block;" />
           </div>
           <h1 style="color: #ffffff; margin: 14px 0 4px; font-size: 21px; letter-spacing: 0.5px; font-weight: 700;">जन स्वास्थ्य सहायता अभियान</h1>
           <p style="color: #ffffff; margin: 0; font-size: 14px; opacity: 0.92;">Jan Swasthya Sahayta Abhiyan</p>
         </div>
-        
+
         <div style="padding: 30px; color: #1f2d3d; line-height: 1.6;">
-          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #123b68;">Dear ${participantName},</p>
-          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #123b68;">प्रिय ${participantName},</p>
-          
+          <p style="font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #1A2E05;">Dear ${participantName},</p>
+          <p style="font-size: 16px; font-weight: bold; margin-top: 0; color: #1A2E05;">प्रिय ${participantName},</p>
+
           <p style="font-size: 18px; color: #d32f2f; font-weight: bold; margin-bottom: 20px;">Meeting Reminder / मीटिंग रिमाइंडर</p>
-          
+
           <p>
             You are missing an ongoing meeting. <strong>${senderName}</strong> is waiting for you.<br/>
             आप एक चल रही मीटिंग में शामिल नहीं हुए हैं। <strong>${senderName}</strong> आपका इंतज़ार कर रहे हैं।
           </p>
-          
+
           <div style="background-color: #fff9f9; border: 1px solid #f5d0d0; border-left: 5px solid #d32f2f; padding: 18px 20px; margin: 25px 0; border-radius: 8px;">
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px;">Meeting Title / मीटिंग का नाम:</td>
-                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #123b68;">${title}</td>
+                <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #1A2E05;">${title}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #5d7088; font-size: 13px;">Scheduled For / निर्धारित समय:</td>
@@ -381,23 +381,23 @@ export const sendMeetingReminderEmail = async (options) => {
               </tr>
             </table>
           </div>
-          
+
           <p style="font-size: 14px; text-align: center; background: #fff8e1; padding: 10px; border: 1px dashed #ffc107; margin: 20px 0;">
             Please join the meeting immediately via your dashboard.<br/>
             कृपया अपने डैशबोर्ड के माध्यम से तुरंत मीटिंग में शामिल हों।
           </p>
-          
+
           <div style="text-align: center; margin: 35px 0;">
-            <a href="https://jssabhiyan.com" style="background-color: #1761b0; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Join Meeting Now / अभी शामिल हों</a>
+            <a href="https://jssabhiyan.com" style="background-color: #4D7C0F; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; letter-spacing: 0.5px; font-size: 15px;">Join Meeting Now / अभी शामिल हों</a>
           </div>
-          
+
           <p style="font-size: 12px; color: #6b7d93; font-style: italic; border-top: 1px solid #e3ecf7; padding-top: 12px; margin-top: 30px;">
             *This is an automated message. Please do not reply to this email.<br/>
             यह एक स्वचालित संदेश है। कृपया इस ईमेल का उत्तर न दें।
           </p>
         </div>
-        
-        <div style="background-color: #123b68; padding: 18px 20px; text-align: center; font-size: 11px; color: #c9d8ea;">
+
+        <div style="background-color: #1A2E05; padding: 18px 20px; text-align: center; font-size: 11px; color: #D9F99D;">
           <p style="margin: 0;">&copy; ${new Date().getFullYear()} Jan Swasthya Sahayta Abhiyan (JSSA). All Rights Reserved.</p>
         </div>
       </div>

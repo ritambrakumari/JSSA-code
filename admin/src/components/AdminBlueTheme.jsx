@@ -77,6 +77,17 @@ export function AdminHero({ kicker = "Admin Panel", title, subtitle, icon: Icon,
 export const ADMIN_THEME_CSS = String.raw`
 /* ── base: landing typography & surfaces ── */
 body.adm-blue{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+/* Force the same font on every element inside every admin page (Claim Requests, Camp/Enquiry/Exam/
+   Employee/Lead Management, Pharmacy, MOU, Fee Structure, Wallet Management/Ledger, etc.) so none of
+   them keep an older font, even if an element sets its own font-family deep inside the page. */
+.adm-blue main, .adm-blue main *:not(.print-area):not(.print-area *):not(#application-slip-pdf *):not(.adm-keep):not(.adm-keep *){font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+/* Segoe UI has no 900 weight, so "font-black"/"font-extrabold" headings & labels (older pages like
+   Claim Requests, Camp Management, etc.) get browser-faked ultra-bold and look chunkier/different
+   from the landing page. Cap them to the same bold weight the landing page uses everywhere. */
+.adm-blue main .font-black:not(.print-area):not(.print-area *):not(#application-slip-pdf *):not(.adm-keep):not(.adm-keep *),
+.adm-blue main .font-extrabold:not(.print-area):not(.print-area *):not(#application-slip-pdf *):not(.adm-keep):not(.adm-keep *),
+.adm-blue main h1:not(.print-area):not(.print-area *):not(#application-slip-pdf *):not(.adm-keep):not(.adm-keep *),
+.adm-blue main h2:not(.print-area):not(.print-area *):not(#application-slip-pdf *):not(.adm-keep):not(.adm-keep *){font-weight:800!important;}
 body.adm-blue main.adm-main{background:#f9fafb!important;}
 .adm-blue main :is(h1,h2).text-gray-900:not(.adm-keep):not(.adm-keep *):not(.print-area):not(.print-area *):not(#application-slip-pdf *),.adm-blue main :is(h1,h2).text-gray-800:not(.adm-keep):not(.adm-keep *):not(.print-area):not(.print-area *):not(#application-slip-pdf *),.adm-blue main :is(h1,h2).text-black:not(.adm-keep):not(.adm-keep *):not(.print-area):not(.print-area *):not(#application-slip-pdf *){color:#1A2E05!important;}
 /* tables: dark-green header like the landing job table */

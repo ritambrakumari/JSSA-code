@@ -574,13 +574,18 @@ export default function JSSAbhiyanLogin() {
         .jl-theme .from-green-500,.jl-theme .from-green-600{background-image:linear-gradient(to right,#65A30D,#4D7C0F);}
         .jl-theme .shadow-green-200{--tw-shadow-color:#D9F99D;}
       `}</style>
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl flex flex-col">
-        {/* LEFT: Login Form */}
-        <div className="w-full p-6 sm:p-8 lg:p-10 bg-white rounded-2xl">
-          {/* Brand Header */}
-          <div className="mb-10 flex flex-col items-center">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl flex flex-col overflow-hidden">
+        {/* Brand Header (same green gradient box as the Admin Portal login) */}
+        <div className="pt-10 pb-8 px-8 text-center relative" style={{ background: "linear-gradient(100deg,#3F6212 0%,#4D7C0F 55%,#65A30D 100%)", textShadow: "0 1px 2px rgba(26,46,5,.35)" }}>
+          <div className="flex justify-center">
+            <div className="bg-white p-4 rounded-2xl shadow-2xl">
+              <img src={logo} alt="JSSA Logo" className="h-24 md:h-28 object-contain" />
+            </div>
           </div>
+        </div>
 
+        {/* LEFT: Login Form */}
+        <div className="w-full p-6 sm:p-8 lg:p-10 bg-white">
           {/* Form Fields */}
           <div className="space-y-6">
             <div>

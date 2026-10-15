@@ -182,29 +182,33 @@ export default function ForgotPassword() {
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden" style={{ borderTop: `4px solid ${GREEN}` }}>
-        {/* Header */}
-        <div className="p-6 sm:p-8 bg-white">
-          <div className="mb-6">
-            <img
-              src={logo}
-              alt="Jan Swasthya Sahayata Abhiyan"
-              className="w-full max-w-lg object-contain mb-4"
-            />
-            <h2 className="text-2xl font-bold mb-2" style={{ color: DARK_GREEN }}>
-              {step === 1 && "Forgot Password?"}
-              {step === 2 && "Enter OTP"}
-              {step === 3 && "Reset Password"}
-              {step === 4 && "Password Reset Successful!"}
-            </h2>
-            <p className="text-sm text-gray-600">
-              {step === 1 && "Enter your mobile number to receive an OTP"}
-              {step === 2 && `Enter the 6-digit OTP sent to your ${/^\d{10}$/.test(email.trim()) ? "mobile number" : "email"}`}
-              {step === 3 && "Enter your new password"}
-              {step === 4 && "Your password has been reset successfully"}
-            </p>
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
+        {/* Header (same green gradient box as the Admin Portal / main login) */}
+        <div className="pt-10 pb-8 px-8 text-center relative" style={{ background: "linear-gradient(100deg,#3F6212 0%,#4D7C0F 55%,#65A30D 100%)", textShadow: "0 1px 2px rgba(26,46,5,.35)" }}>
+          <div className="flex justify-center mb-6">
+            <div className="bg-white p-4 rounded-2xl shadow-2xl">
+              <img
+                src={logo}
+                alt="Jan Swasthya Sahayata Abhiyan"
+                className="h-24 md:h-28 object-contain"
+              />
+            </div>
           </div>
+          <h2 className="text-white text-2xl font-bold mb-1">
+            {step === 1 && "Forgot Password?"}
+            {step === 2 && "Enter OTP"}
+            {step === 3 && "Reset Password"}
+            {step === 4 && "Password Reset Successful!"}
+          </h2>
+          <p className="text-white/90 text-sm">
+            {step === 1 && "Enter your mobile number to receive an OTP"}
+            {step === 2 && `Enter the 6-digit OTP sent to your ${/^\d{10}$/.test(email.trim()) ? "mobile number" : "email"}`}
+            {step === 3 && "Enter your new password"}
+            {step === 4 && "Your password has been reset successfully"}
+          </p>
+        </div>
 
+        <div className="p-6 sm:p-8 bg-white">
           {/* Step 1: Email Input */}
           {step === 1 && (
             <div className="space-y-4">

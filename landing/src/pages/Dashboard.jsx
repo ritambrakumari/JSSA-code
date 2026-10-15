@@ -5360,10 +5360,6 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           <span>|</span>
           <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
         </div>
-        <form className="nh-search" onSubmit={search} role="search">
-          <input aria-label="Search pages" placeholder="Search here..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
-          <button type="submit" aria-label="Search">⌕</button>
-        </form>
         <a href={LOGIN_URL} className="nh-login">LOGIN</a>
         <button className="nh-burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           {open ? "✕" : "☰"}

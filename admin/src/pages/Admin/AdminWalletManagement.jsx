@@ -442,7 +442,7 @@ const AdminWalletManagement = () => {
           {/* Header & Search */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-xl font-bold text-gray-800">Wallet Management</h1>
+              <h1 className="text-2xl font-bold text-gray-800">Wallet Management</h1>
               <p className="text-[10px] font-black text-[#3AB000] uppercase tracking-[0.2em] mt-1">Manual Credit & Balance Audit</p>
             </div>
 
