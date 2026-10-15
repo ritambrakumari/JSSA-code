@@ -5303,12 +5303,10 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         }
         @media(max-width:760px){
           .nh-main{padding:8px 20px;}
-          .nh-nav{display:none;}
+          .nh-nav{display:flex;flex-wrap:wrap;justify-content:center;}
+          .nh-link{font-size:12px;padding:6px 5px;}
           .nh-search{margin-left:auto;}
           .nh-login{margin-left:auto;}
-          .nh-burger{display:block;}
-          .nh-drawer{display:block;background:#fff;border-bottom:1px solid #e5e7eb;padding:6px 20px 12px;}
-          .nh-drawer .nh-link{display:block;width:100%;text-align:left;border-radius:0;border-bottom:1px solid #f1f5f9;padding:12px 6px;font-size:13px;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
