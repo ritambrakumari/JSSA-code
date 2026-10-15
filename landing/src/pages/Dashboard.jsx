@@ -5276,9 +5276,8 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         .nh-link:hover{background:#f1f5f9;}
         .nh-link:active{background:#e8f5e9;}
         .nh-link.on{background:#4D7C0F;color:#fff;}
-        .nh-donate,.nh-donate-nav{background:#C9302C;color:#fff;border:0;border-radius:4px;padding:9px 12px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer;}
-        .nh-donate:active,.nh-donate-nav:active{background:#A52822;}
-        .nh-donate-nav{flex-shrink:0;}
+        .nh-donate{background:#C9302C;color:#fff;border:0;border-radius:4px;padding:9px 12px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer;}
+        .nh-donate:active{background:#A52822;}
         .nh-search{display:flex;align-items:center;border:1px solid #cbd5e1;border-radius:4px;height:40px;flex:0 0 200px;}
         .nh-search input{width:100%;min-width:0;border:0;background:transparent;padding:9px 11px;font:inherit;font-size:15px;outline:none;}
         .nh-search button{height:100%;border:0;background:#3F6212;color:#fff;padding:0 10px;cursor:pointer;}
@@ -5286,7 +5285,6 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         .nh-login:active{background:#3F6212;}
         .nh-burger{display:none;background:none;border:1px solid #cbd5e1;border-radius:6px;width:40px;height:40px;font-size:22px;cursor:pointer;flex-shrink:0;}
         .nh-drawer{display:none;}
-        .nh-break-login{display:none;}
         .nh-link:focus,.nh-link:focus-visible{outline:none !important;box-shadow:none !important;}
         .nh-donate:focus,.nh-donate:focus-visible,.nh-login:focus,.nh-login:focus-visible,.nh-lang:focus,.nh-lang:focus-visible,.nh-brand:focus,.nh-brand:focus-visible,.nh-burger:focus,.nh-burger:focus-visible,.nh-search input:focus,.nh-search button:focus{outline:none;box-shadow:0 0 0 3px rgba(77,124,15,.45);border-radius:6px;}
         @media(max-width:1600px) and (min-width:1181px){.nh-main{padding:8px 24px;gap:10px;}.nh-brand img{height:88px;max-width:370px;}.nh-nav{flex-wrap:nowrap;gap:4px;}.nh-link{padding:8px 7px;font-size:14.5px;}.nh-search{flex-basis:170px;}}
@@ -5305,20 +5303,19 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         }
         @media(max-width:760px){
           .nh-main{padding:8px 20px;flex-wrap:wrap;}
-          .nh-brand{order:1;}
-          .nh-access{order:1;}
-          .nh-login{order:1;margin-left:auto;}
-          .nh-burger{order:1;}
           .nh-nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;order:5;gap:2px;}
           .nh-nav::-webkit-scrollbar{display:none;}
           .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;}
+          .nh-search{margin-left:auto;}
+          .nh-login{margin-left:auto;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
           .nh-hide-sm{display:none;}
           .nh-main{padding:8px 12px;gap:8px;flex-wrap:wrap;}
           .nh-brand img{height:58px;}
-          .nh-login{padding:8px 14px;font-size:12px;}
+          .nh-search{order:4;flex:1 1 100%;}
+          .nh-login{padding:8px 14px;font-size:12px;margin-left:auto;}
           .nh-drawer{padding:4px 12px 10px;}
         }
       `}</style>
@@ -5354,16 +5351,15 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
               {language === "hi" ? item.hi : item.en}
             </button>
           ))}
-          <button className="nh-link nh-donate-nav" onClick={() => go("donate")}>
-            {language === "hi" ? "अभी दान करें" : "Donate Now"}
-          </button>
         </nav>
+        <button className="nh-donate" onClick={() => go("donate")}>
+          {language === "hi" ? "अभी दान करें" : "Donate Now"}
+        </button>
         <div className="nh-access" aria-label="Language">
           <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
           <span>|</span>
           <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
         </div>
-        <span className="nh-break-login" aria-hidden="true"></span>
         <a href={LOGIN_URL} className="nh-login">LOGIN</a>
         <button className="nh-burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           {open ? "✕" : "☰"}

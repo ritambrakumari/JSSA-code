@@ -19,7 +19,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 const ADMIN_EMAIL = "admin@jssabhiyan.com";
 const ADMIN_PASSWORD = "JSSA@Admin#2025";
-const ADMIN_ROLE = "staff"; // Administrative Staff
+const ADMIN_ROLE = "admin"; // Administrative Staf
 const STAFF_NAME = "Staff";
 const JOB_TITLE = "Administrator";
 

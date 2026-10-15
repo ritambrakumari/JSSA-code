@@ -646,7 +646,7 @@ const StaffOnboarding = () => {
                       <td className="px-4 py-3 border-r border-[#5cb87a] text-center text-[13px]">{edu.year}</td>
                       <td className="px-4 py-3 border-r border-[#5cb87a] text-center font-black text-[13px]">{edu.percentage}%</td>
                       <td className="px-4 py-3 border-r border-[#5cb87a] text-center">
-                        {edu.file ? <a href={edu.file} target="_blank" rel="noreferrer" className="text-blue-600 underline font-black text-[11px]">View</a> : "N/A"}
+                        {edu.file ? <a href={edu.file} target="_blank" rel="noreferrer" className="text-green-700 underline font-black text-[11px]">View</a> : "N/A"}
                       </td>
                       <td className="px-4 py-3 text-center">
                         <button onClick={() => removeEducationRow(idx)} className="text-red-600 p-1 border border-red-200 rounded"><Trash2 size={14} /></button>
