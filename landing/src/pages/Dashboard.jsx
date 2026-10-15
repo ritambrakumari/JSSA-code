@@ -5302,9 +5302,10 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           .nh-burger,.nh-drawer{display:none;}
         }
         @media(max-width:760px){
-          .nh-main{padding:8px 20px;}
-          .nh-nav{display:flex;flex-wrap:wrap;justify-content:center;}
-          .nh-link{font-size:12px;padding:6px 5px;}
+          .nh-main{padding:8px 20px;flex-wrap:wrap;}
+          .nh-nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;order:5;gap:2px;}
+          .nh-nav::-webkit-scrollbar{display:none;}
+          .nh-link{font-size:12px;padding:7px 8px;flex-shrink:0;}
           .nh-search{margin-left:auto;}
           .nh-login{margin-left:auto;}
         }
