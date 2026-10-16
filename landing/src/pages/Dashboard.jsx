@@ -5261,31 +5261,33 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
         .nh-top{background:#1A2E05;color:#fff;font-size:11px;min-height:30px;padding:4px 40px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
         .nh-top-l{display:flex;gap:20px;align-items:center;}
         .nh-gov{font-weight:700;}
-        .nh-access{color:#e2e8f0;white-space:nowrap;display:flex;align-items:center;gap:4px;margin-left:auto;}
+        .nh-access{color:#e2e8f0;white-space:nowrap;display:flex;align-items:center;gap:4px;margin-left:auto;order:4;}
         .nh-lang{border:0;background:none;color:#3F6212;font-size:13px;padding:3px 5px;cursor:pointer;}
         .nh-lang.active{color:#fff;background:#4D7C0F;border-radius:3px;font-weight:800;}
         .nh-soc{display:flex;gap:6px;}
         .nh-soc a{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
         .nh-soc svg{width:13px;height:13px;}
         .nh-main{background:#fff;border-bottom:1px solid #e5e7eb;padding:8px 40px;display:flex;align-items:center;gap:12px;}
-        .nh-brand{background:none;border:0;padding:0;cursor:pointer;flex-shrink:0;display:flex;align-items:center;}
+        .nh-brand{background:none;border:0;padding:0;cursor:pointer;flex-shrink:0;display:flex;align-items:center;order:1;}
         .nh-brand img{height:106px;width:auto;max-width:500px;object-fit:contain;display:block;}
+        .nh-top-row{display:contents;}
+        .nh-mobile-actions{display:contents;}
         .nh-scroll-row{display:contents;}
-        .nh-nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;}
+        .nh-nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;order:2;}
         .nh-link,.nh-donate,.nh-login,.nh-lang,.nh-burger,.nh-brand,.nh-search input,.nh-search button{-webkit-tap-highlight-color:transparent;}
         .nh-link{background:none;border:0;padding:9px 10px;font-size:15px;font-weight:700;color:#1f2937;cursor:pointer;border-radius:6px;white-space:nowrap;}
         .nh-link:hover{background:#f1f5f9;}
         .nh-link:active{background:#e8f5e9;}
         .nh-link.on{background:#4D7C0F;color:#fff;}
-        .nh-donate,.nh-donate-nav{background:#C9302C;color:#fff;border:0;border-radius:4px;padding:9px 12px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer;}
+        .nh-donate,.nh-donate-nav{background:#C9302C;color:#fff;border:0;border-radius:4px;padding:9px 12px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer;order:3;}
         .nh-donate:active,.nh-donate-nav:active{background:#A52822;}
         .nh-donate-nav{flex-shrink:0;}
-        .nh-search{display:flex;align-items:center;border:1px solid #cbd5e1;border-radius:4px;height:40px;flex:0 0 200px;}
+        .nh-search{display:flex;align-items:center;border:1px solid #cbd5e1;border-radius:4px;height:40px;flex:0 0 200px;order:5;}
         .nh-search input{width:100%;min-width:0;border:0;background:transparent;padding:9px 11px;font:inherit;font-size:15px;outline:none;}
         .nh-search button{height:100%;border:0;background:#3F6212;color:#fff;padding:0 10px;cursor:pointer;}
-        .nh-login{background:#4D7C0F;color:#fff;font-weight:800;font-size:14px;padding:9px 18px;border-radius:6px;text-decoration:none;flex-shrink:0;}
+        .nh-login{background:#4D7C0F;color:#fff;font-weight:800;font-size:14px;padding:9px 18px;border-radius:6px;text-decoration:none;flex-shrink:0;order:6;}
         .nh-login:active{background:#3F6212;}
-        .nh-burger{display:none;background:none;border:1px solid #cbd5e1;border-radius:6px;width:40px;height:40px;font-size:22px;cursor:pointer;flex-shrink:0;}
+        .nh-burger{display:none;background:none;border:1px solid #cbd5e1;border-radius:6px;width:40px;height:40px;font-size:22px;cursor:pointer;flex-shrink:0;order:7;}
         .nh-drawer{display:none;}
         .nh-break-login{display:none;}
         .nh-link:focus,.nh-link:focus-visible{outline:none !important;box-shadow:none !important;}
@@ -5305,29 +5307,36 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
           .nh-burger,.nh-drawer{display:none;}
         }
         @media(max-width:760px){
-          .nh-main{padding:8px 16px;flex-wrap:wrap;overflow-x:visible;row-gap:10px;column-gap:8px;}
-          .nh-brand{flex:0 0 100%;}
-          .nh-brand img{height:50px;}
+          .nh-main{padding:8px 16px;flex-wrap:wrap;overflow-x:visible;row-gap:8px;column-gap:8px;}
+          .nh-top-row{display:flex;align-items:center;justify-content:space-between;flex:0 0 100%;gap:8px;}
+          .nh-brand{flex:0 0 auto;order:0;}
+          .nh-brand img{height:42px;}
+          .nh-mobile-actions{display:flex;align-items:center;gap:6px;flex-shrink:1;flex-wrap:nowrap;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+          .nh-mobile-actions::-webkit-scrollbar{display:none;}
+          .nh-donate,.nh-donate-nav{flex-shrink:0;font-size:10px;padding:7px 9px;}
+          .nh-access{flex-shrink:0;margin-left:0;}
           .nh-scroll-row{display:flex;align-items:center;flex:0 0 100%;flex-wrap:nowrap;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
           .nh-scroll-row::-webkit-scrollbar{display:none;}
           .nh-nav{flex:0 0 auto;flex-wrap:nowrap;gap:2px;}
           .nh-link{font-size:12px;padding:7px 8px;white-space:nowrap;flex-shrink:0;}
-          .nh-donate,.nh-donate-nav{flex:0 0 auto;}
-          .nh-access{flex:0 0 auto;margin-left:0;}
           .nh-search{flex:1 1 140px;min-width:0;}
           .nh-login{flex:0 0 auto;}
         }
         @media(max-width:600px){
           .nh-top{padding:5px 12px;font-size:10px;}
           .nh-hide-sm{display:none;}
-          .nh-brand img{height:44px;}
+          .nh-brand img{height:38px;}
+          .nh-donate,.nh-donate-nav{font-size:9px;padding:6px 8px;}
+          .nh-access .nh-lang{font-size:11px;padding:3px 4px;}
           .nh-login{padding:8px 14px;font-size:12px;}
           .nh-drawer{padding:4px 12px 10px;}
           .nh-search{flex-basis:110px;}
         }
         @media(max-width:340px){
+          .nh-brand img{height:32px;}
+          .nh-donate,.nh-donate-nav{font-size:8px;padding:5px 6px;}
+          .nh-access .nh-lang{font-size:10px;padding:2px 3px;}
           .nh-search{flex:1 1 100%;}
-          .nh-donate,.nh-access,.nh-login{flex:0 0 auto;}
         }
       `}</style>
 
@@ -5343,9 +5352,21 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
       </div>
 
       <header className="nh-main">
-        <button type="button" className="nh-brand" onClick={() => go("home")} aria-label="Home">
-          <img src={logo} alt="Jan Swasthya Sahayata Abhiyan" />
-        </button>
+        <div className="nh-top-row">
+          <button type="button" className="nh-brand" onClick={() => go("home")} aria-label="Home">
+            <img src={logo} alt="Jan Swasthya Sahayata Abhiyan" />
+          </button>
+          <div className="nh-mobile-actions">
+            <button className="nh-donate" onClick={() => go("donate")}>
+              {language === "hi" ? "अभी दान करें" : "Donate Now"}
+            </button>
+            <div className="nh-access" aria-label="Language">
+              <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
+              <span>|</span>
+              <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
+            </div>
+          </div>
+        </div>
         <div className="nh-scroll-row">
           <nav className="nh-nav">
             {homeNavLinks.map((item) => (
@@ -5364,14 +5385,6 @@ function NewHeader({ onNavigate, socialLinks, language, onLanguageChange, active
               </button>
             ))}
           </nav>
-          <button className="nh-donate" onClick={() => go("donate")}>
-            {language === "hi" ? "अभी दान करें" : "Donate Now"}
-          </button>
-          <div className="nh-access" aria-label="Language">
-            <button className={`nh-lang ${language === "hi" ? "active" : ""}`} onClick={() => onLanguageChange("hi")}>हिंदी</button>
-            <span>|</span>
-            <button className={`nh-lang ${language === "en" ? "active" : ""}`} onClick={() => onLanguageChange("en")}>English</button>
-          </div>
         </div>
         <form className="nh-search" onSubmit={search} role="search">
           <input aria-label="Search pages" placeholder="Search here..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
